@@ -28,7 +28,7 @@ use aws_sdk_dynamodb::types::AttributeValue;
 use aws_sdk_kinesis::types::Shard;
 use futures::future::join_all;
 use itertools::Itertools;
-use rand::seq::{IteratorRandom, SliceRandom};
+use rand::seq::{IndexedRandom, IteratorRandom};
 
 use crate::types::SequenceNumber::{AT_TIMESTAMP, LATEST, TRIM_HORIZON};
 
@@ -309,7 +309,7 @@ pub(crate) fn calculate_acquire(
 
     let headroom = max(0, max_leases - ours);
 
-    let mut rng = rand::thread_rng();
+    let mut rng = rand::rng();
 
     // we could add weights here if we had a preference.
     // we allow picking our own expired leases.
@@ -367,7 +367,7 @@ pub(crate) fn calculate_acquire(
                     _ => false,
                 })
                 .collect_vec()
-                .choose(&mut rand::thread_rng())
+                .choose(&mut rand::rng())
             {
                 return vec![target.clone()];
             }
