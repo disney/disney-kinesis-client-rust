@@ -24,7 +24,7 @@ use aws_sdk_kinesis::operation::{
 };
 use aws_smithy_runtime_api::client::orchestrator::HttpResponse;
 use aws_smithy_runtime_api::client::result::SdkError;
-use derive_more::{Display, Error, From};
+use derive_more::{Display, Error};
 
 use std::fmt::Debug;
 

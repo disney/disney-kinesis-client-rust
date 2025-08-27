@@ -465,7 +465,7 @@ impl Client {
             .count();
         if !recently_ended.is_empty()
             || workers < 2
-            || rand::thread_rng().gen_range(0..(workers / 2)) == 0
+            || rand::rng().random_range(0..(workers / 2)) == 0
         {
             // we're a leader in this cycle...
             let shards: HashMap<String, Shard> =
