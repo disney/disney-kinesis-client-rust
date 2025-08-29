@@ -2,8 +2,6 @@
 
 This is a proof-of-concept Kinesis Client Library (KCL) for Rust which is used to be able to read records from an [AWS Kinesis stream](https://docs.aws.amazon.com/kinesis/latest/APIReference/Welcome.html), on a distributed network, with at-least-once delivery of records, using best efforts to avoid duplication. This wraps the [AWS SDK](https://awslabs.github.io/aws-sdk-rust/) with a distributed consensus algorithm for managing shards that is compatible with [the Java Kinesis Client Library v2](https://github.com/awslabs/amazon-kinesis-client) (using dynamodb as a data store) and aggregated records written with the [Kinesis Producer Library](https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-kpl.html).
 
-Only polling-mode is supported, as [Enhanced Fan Out](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html) is [not supported](https://github.com/awslabs/aws-sdk-rust/discussions/638) by the AWS SDK. See the end of this document for details.
-
 Complete Rust crate documention is available, and examples of use are available in the `tests` folder including an integration test alongside the Java KCLv2.
 
 ## Distributed Algorithm
