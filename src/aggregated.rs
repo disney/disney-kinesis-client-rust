@@ -27,7 +27,7 @@ use prost::Message;
 // a valid AggregatedRecord
 // 16 byte checksum of the protobuf bytes
 //
-// The protobuf part of the messag was originally created with prost-build but
+// The protobuf part of the message was originally created with prost-build but
 // it was so fiddly to get it working, and the definitions so simple, we just
 // inline it.
 #[derive(Clone, PartialEq, Message)]
@@ -47,7 +47,7 @@ pub struct Record {
     pub explicit_hash_key_index: Option<u64>,
     #[prost(bytes = "vec", required, tag = "3")]
     pub data: Vec<u8>,
-    // removed all the "tags" stuff from index 4 because it's unusued
+    // removed all the "tags" stuff from index 4 because it's unused
 }
 
 pub fn deaggregate(data: &[u8]) -> Option<AggregatedRecord> {
